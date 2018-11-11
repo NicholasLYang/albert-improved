@@ -1,4 +1,5 @@
 require 'json'
+require 'fileutils'
 
 def scrape(filename, courses)
   lines = File.readlines(filename).each do |line|
@@ -13,5 +14,9 @@ courses = {}
 scrape("CORE-UA", courses)
 scrape("CHEM-UA",  courses)
 scrape("CSCI-UA",  courses)
+scrape("MATH-UA",  courses)
+scrape("FREN-UA",  courses)
+scrape("AHSEM-UA",  courses)
 
 File.open("courses.json", 'w') { |file| file.write(JSON.generate(courses)) }
+FileUtils.cp("courses.json", "chrome/courses.json")
