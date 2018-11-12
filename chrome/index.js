@@ -194,13 +194,11 @@ const replacements = [
   },
   {
     regex: /CIWW/g,
-    replacement:
-      '<a href="https://goo.gl/maps/eTwn5c2fky62">Warren Weaver Hall</a>'
+    replacement: "<a href=https://goo.gl/maps/eTwn5c2fky62 target=\"_blank\"> Warren Weaver Hall </a>"
   },
   {
     regex: /SILV/g,
-    replacement:
-      '<a href="https://goo.gl/maps/oRCqugARiqr"> Silver Building </a>'
+    replacement: "<a href=https://goo.gl/maps/oRCqugARiqr target=\"_blank\"> Silver Building </a>"
   },
   {
     regex: /Room:/g,
@@ -324,14 +322,17 @@ const replacements = [
   { regex: /85W3/g, name: "85 West Third Street" },
   { regex: /890B/g, name: "890 Broadway " }
 ];
-const replace = () => {
-  let body = document.body.innerHTML;
-  replacements.map(r => {
-    body = body.replace(r.regex, r.replacement);
-  });
 
-  document.body.innerHTML = body;
+const replace = () => {
+  if (document.body) {
+    let body = document.body.innerHTML;
+    replacements.map(r => {
+      body = body.replace(r.regex, r.replacement);
+    });
+
+    document.body.innerHTML = body;
+  }
 };
 
-setTimeout(replace, 3000);
-document.addEventListener("click", replace);
+setTimeout(replace, 5000);
+document.addEventListener("click", () => setTimeout(replace, 5000));

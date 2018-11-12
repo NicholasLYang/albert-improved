@@ -11,6 +11,10 @@ class Renderer
 
     @substitutions = substitutions.join(",\n")
   end
+
+  def render_link(url, content)
+    "\"<a href=#{url} target=\\\"_blank\\\"> #{content} </a>\""
+  end
   
   def render(courses)
     generate_substitutions(courses)
