@@ -1,0 +1,173 @@
+const replacements = [
+      <%= substitutions %>,
+  {
+    regex: /Bldg:/g,
+    replacement: "Building: "
+  },
+  {
+	regex: /Mkng/g,
+	replacement: "Making"
+  },
+  {
+	regex: /Decisn/g,
+	replacement: "Decision"
+  },
+  {
+	regex: /Prob,Stats/,
+	replacement: "Probability, Statistics"
+  },
+  {
+	regex: /Tue,Thu/,
+	replacement: "Tuesday, Thursday"
+  },
+  {
+	regex: /Expressive Cult:/,
+	replacement: "Expressive Culture:"
+  },
+  {
+	regex: /Nbr/,
+	replacement: "Number"
+  },
+  {
+    regex: /CIWW/g,
+    replacement:
+      '<a href="https://goo.gl/maps/eTwn5c2fky62">Warren Weaver Hall</a>'
+  },
+  {
+    regex: /SILV/g,
+    replacement:
+      '<a href="https://goo.gl/maps/oRCqugARiqr"> Silver Building </a>'
+  },
+  {
+    regex: /Room:/g,
+    replacement: "Room: "
+  },
+  {
+    regex: /Loc:/g,
+    replacement: "Location: "
+  },
+  {
+    regex: /<span>Mo<\/span>/g,
+    replacement: "<span> Monday </span>"
+  },
+  {
+    regex: /MoWe/g,
+    replacement: "Monday, Wednesday"
+  },
+  {
+    regex: /TuTh/g,
+    replacement: "Tuesday, Thursday"
+  },
+  {
+    regex: /MATH-UA(&nbsp;)349/g,
+    replacement: "Honors Algebra II"
+  },
+  { regex: /108B/g, name: "108 Broadway" },
+  { regex: /10AP/g, name: "10 Astor Place" },
+  { regex: /10WP/g, name: "10 Washington Place" },
+  { regex: /110F/g, name: "110 Fifth Avenue" },
+  { regex: /110W/g, name: "110 West 3rd Street Residence" },
+  { regex: /113U/g, name: "113 University Place" },
+  { regex: /11ST/g, name: "41 East 11th Street, 7th Floor" },
+  { regex: /12WV/g, name: "12 Waverly Place" },
+  { regex: /130M/g, name: "130 MacDougal Street" },
+  { regex: /133M/g, name: "130 MacDougal Street" },
+  { regex: /137M/g, name: "130 MacDougal Street" },
+  { regex: /14AWM/g, name: "14A Washington Mews" },
+  { regex: /142M/g, name: "142 Mulberry Street" },
+  { regex: /145F/g, name: "145 Fourth Avenue" },
+  { regex: /14UP/g, name: "14 University Place" },
+  { regex: /14WA/g, name: "14 Wall Street, Tandon School of Engineering" },
+  {
+    regex: /15MTC/g,
+    name: "15 MetroTech Center, Tandon School of Engineering"
+  },
+  { regex: /15ST/g, name: "345 East 15th Street" },
+  { regex: /1633/g, name: "1633 Broadway" },
+  { regex: /194M/g, name: "194 Mercer Street" },
+  { regex: /199L/g, name: "199 Lafayette Street" },
+  { regex: /19UP/g, name: "19 University Place" },
+  { regex: /19W4/g, name: "19 West 4th Street" },
+  { regex: /19WS/g, name: "19 Washington Square North" },
+  { regex: /1E78/g, name: "The Institute of Fine Arts, 1 East 78th Street" },
+  { regex: /1WP/g, name: "1 Washington Place" },
+  { regex: /1WSN/g, name: "1 Washington Square North" },
+  { regex: /20CS/g, name: "20 Cooper Square" },
+  { regex: /214M/g, name: "214 Mercer Street" },
+  { regex: /230S/g, name: "230 Sullivan Street Residence" },
+  { regex: /239T/g, name: "239 Thompson Street" },
+  { regex: /240G/g, name: "240 Greene Street" },
+  { regex: /240M/g, name: "240 Mercer Street" },
+  { regex: /245S/g, name: "245 Sullivan Street" },
+  { regex: /246G/g, name: "246 Greene Street" },
+  { regex: /25W4/g, name: "25 West 4th Street" },
+  { regex: /25WV/g, name: "25 Waverly Place" },
+  { regex: /269M/g, name: "269 Mercer Street" },
+  { regex: /285M/g, name: "285 Mercer Street" },
+  { regex: /295L/g, name: "295 Lafayette Street" },
+  { regex: /29WW/g, name: "29 Washington Square East" },
+  { regex: /2AVE/g, name: "111 Second Avenue" },
+  { regex: /2BWY/g, name: "2 Broadway, Tandon School of Engineering" },
+  { regex: /2MTC/g, name: "2 MetroTech Center" },
+  { regex: /2ST/g, name: "2nd Street Residence Hall" },
+  { regex: /2UP/g, name: "2 University Place" },
+  { regex: /2WSN/g, name: "2 Washington Square North" },
+  { regex: /3-5W/g, name: "3-5 Washington Place" },
+  { regex: /333A/g, name: "33 Third Avenue" },
+  { regex: /342E/g, name: "342 East 26th Street, Room 200A" },
+  { regex: /345E/g, name: "345 East 24th Street" },
+  { regex: /380S/g, name: "380 Second Avenue, 4th Floor" },
+  { regex: /383L/g, name: "383 Lafayette Street" },
+  { regex: /3AVN/g, name: "Third Avenue North Dormitory" },
+  { regex: /3WSN/g, name: "3 Washington Square North" },
+  { regex: /411L/g, name: "411 Lafayette Street" },
+  { regex: /412W/g, name: "412 West 42nd Street, Playwright Theatre" },
+  { regex: /420W/g, name: "420 West 42nd Street" },
+  {
+    regex: /423E/g,
+    name: "Veterans Administration Hospital, 423 East 23rd Street"
+  },
+  { regex: /440L/g, name: "440 Lafayette Street" },
+  { regex: /44CP/g, name: "44 Central Park West" },
+  { regex: /48CS/g, name: "48 Cooper Square" },
+  { regex: /4E14/g, name: "4 E. 14th St" },
+  { regex: /4WP/g, name: "4 Washington Place" },
+  { regex: /4WSN/g, name: "4 Washington Square North" },
+  { regex: /50WS/g, name: "50 Washington Square South" },
+  { regex: /51WS/g, name: "51 Washington Square South" },
+  { regex: /53WS/g, name: "53 Washington Square South" },
+  { regex: /55BS/g, name: "55 Broad Street, Tandon School of Engineering" },
+  { regex: /55BW/g, name: "55 Broadway, Tandon School of Engineering" },
+  { regex: /5WP/g, name: "5 Washington Place" },
+  { regex: /5WSN/g, name: "5 Washington Square North" },
+  { regex: /60FA/g, name: "60 Fifth Avenue" },
+  { regex: /622B/g, name: "622 Broadway" },
+  { regex: /665B/g, name: "665 Broadway" },
+  { regex: /686B/g, name: "686 Broadway" },
+  { regex: /6WP/g, name: "6 Washington Place" },
+  { regex: /715B/g, name: "715 Broadway" },
+  { regex: /719B/g, name: "719 Broadway" },
+  { regex: /721B/g, name: "721 Broadway" },
+  { regex: /725B/g, name: "725 Broadway" },
+  { regex: /726B/g, name: "726 Broadway" },
+  { regex: /730B/g, name: "730 Broadway" },
+  { regex: /75VA/g, name: "75 Varick Street (At Canal Street)" },
+  { regex: /770B/g, name: "770 Broadway" },
+  { regex: /7E12/g, name: "7 East 12th Street, Fairchild Building" },
+  { regex: /7ST/g, name: "7th Street Residence Hall" },
+  { regex: /80WS/g, name: "80 Washington Square East Gallery" },
+  { regex: /838B/g, name: "838 Broadway" },
+  { regex: /85W3/g, name: "85 West Third Street" },
+  { regex: /890B/g, name: "890 Broadway " }
+];
+const replace = () => {
+  let body = document.body.innerHTML;
+  replacements.map(r => {
+    body = body.replace(r.regex, r.replacement);
+  });
+
+  document.body.innerHTML = body;
+};
+
+setTimeout(replace, 3000);
+document.addEventListener("click", replace);

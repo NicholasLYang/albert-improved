@@ -3,7 +3,7 @@
     "version": "1.0",
     "description": "Makes Albert somewhat usable",
     "content_scripts": [{
-	"js": ["content.js"],
+	"js": ["index.js"],
 	"matches": ["https://albert.nyu.edu/*", "https://sis.portal.nyu.edu/*"]
     }],
     "manifest_version": 2
